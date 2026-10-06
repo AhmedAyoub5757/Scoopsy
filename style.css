@@ -65,3 +65,40 @@ html { scroll-behavior: smooth; }
 @media (max-width: 782px) {
   .admin-bar #masthead { top: 46px; }
 }
+
+/* ---------- Flavors section ---------- */
+.sc-flavor {
+  position: relative;
+  overflow: visible;
+  padding-top: 0;
+}
+.sc-flavor .sc-flavor__img {
+  margin-top: -60px;          /* pulls the cone out of the card top */
+  margin-bottom: 8px;
+  transition: transform .5s cubic-bezier(.2, 1.2, .3, 1);
+}
+.sc-flavor .sc-flavor__img img {
+  filter: drop-shadow(0 22px 20px rgba(74, 44, 42, .28));
+  transform-origin: 50% 90%;
+}
+.sc-flavor:hover .sc-flavor__img { transform: translateY(-10px) rotate(-6deg) scale(1.06); }
+
+.sc-flavor .sc-flavor__price .elementor-heading-title {
+  display: inline-block;
+}
+
+/* Coming soon cards: mystery silhouette + badge */
+.sc-flavor.sc-soon .sc-flavor__img img {
+  filter: brightness(0) invert(1) opacity(.5);
+}
+.sc-flavor.sc-soon:hover .sc-flavor__img { transform: translateY(-4px) rotate(0) scale(1.02); }
+.sc-flavor.sc-soon .sc-flavor__price .elementor-heading-title {
+  padding: 6px 18px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, .55);
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
