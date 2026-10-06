@@ -55,3 +55,18 @@ function scoopsy_hero_assets() {
     );
 }
 add_action( 'wp_enqueue_scripts', 'scoopsy_hero_assets' );
+
+add_action( 'wp_head', function () {
+    echo "<script>document.documentElement.classList.add('sc-js');</script>\n";
+}, 1 );
+
+function scoopsy_reveal_assets() {
+    wp_enqueue_script(
+        'scoopsy-reveal',
+        get_template_directory_uri() . '/assets/js/reveal.js',
+        array(),
+        SCOOPSY_VERSION,
+        array( 'in_footer' => true, 'strategy' => 'defer' )
+    );
+}
+add_action( 'wp_enqueue_scripts', 'scoopsy_reveal_assets' );
