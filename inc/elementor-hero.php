@@ -23,3 +23,29 @@ function scoopsy_register_hero_widget( $widgets_manager ) {
     $widgets_manager->register( new \Scoopsy_Hero_Widget() );
 }
 add_action( 'elementor/widgets/register', 'scoopsy_register_hero_widget' );
+
+function scoopsy_register_offer_widget( $widgets_manager ) {
+    require_once get_template_directory() . '/inc/class-scoopsy-offer-widget.php';
+    $widgets_manager->register( new \Scoopsy_Offer_Widget() );
+}
+add_action( 'elementor/widgets/register', 'scoopsy_register_offer_widget' );
+
+function scoopsy_register_offer_assets() {
+    wp_register_style(
+        'scoopsy-offer',
+        get_template_directory_uri() . '/assets/css/offer.css',
+        array( 'scoopsy-style' ),
+        SCOOPSY_VERSION
+    );
+    wp_register_script(
+        'scoopsy-offer',
+        get_template_directory_uri() . '/assets/js/offer.js',
+        array( 'elementor-frontend' ),
+        SCOOPSY_VERSION,
+        array(
+            'in_footer' => true,
+            'strategy'   => 'defer',
+        )
+    );
+}
+add_action( 'wp_enqueue_scripts', 'scoopsy_register_offer_assets' );
