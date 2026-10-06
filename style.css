@@ -102,3 +102,56 @@ html { scroll-behavior: smooth; }
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
+/* ---------- About section ---------- */
+.sc-about__media { position: relative; }
+
+/* Organic mint blob behind the photo */
+.sc-about__media::before {
+  content: '';
+  position: absolute;
+  inset: 6% -5% -5% 9%;
+  background: var(--sc-secondary);
+  border-radius: 62% 38% 55% 45% / 48% 56% 44% 52%;
+  transform: rotate(-4deg);
+  z-index: 0;
+}
+.sc-about__media > * { position: relative; z-index: 1; }
+
+.sc-about__img img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 44px;
+  box-shadow: var(--sc-shadow);
+}
+.sc-about__img { animation: sc-bob 7s ease-in-out infinite; }
+
+/* Floating circle badge */
+.sc-about__media > .sc-about__badge {
+  position: absolute;
+  left: -4%;
+  bottom: 9%;
+  z-index: 2;
+  width: 140px;
+  height: 140px;
+  min-height: 0;
+  border-radius: 50%;
+  box-shadow: 0 14px 30px rgba(255, 111, 145, .45);
+  animation: sc-bob 5s ease-in-out infinite reverse;
+}
+
+@keyframes sc-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-12px) rotate(1.5deg); }
+}
+
+@media (max-width: 767px) {
+  .sc-about__media::before { inset: 4% -2% -3% 4%; }
+  .sc-about__media > .sc-about__badge { left: 2%; bottom: -4%; width: 112px; height: 112px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-about__img, .sc-about__media > .sc-about__badge { animation: none; }
+}
+
